@@ -1,23 +1,22 @@
-let myArray = []
+let myForm = document.querySelector('#test-form')
 
-let form = document.querySelector('#my-form')
-form.addEventListener('submit', (event) => {
+if(localStorage.getItem('criminals') == null){
+    var myArray = []
+} else{
+    myArray = JSON.parse(localStorage.getItem('criminals'))
+}
+
+myForm.addEventListener('submit', (event) => {
     event.preventDefault()
-    myArray.push(event.target.elements.first.value)
-    myArrayToLS = JSON.stringify(myArray)
-    localStorage.setItem('users', myArrayToLS)
-    event.target.elements.first.value = ''
 
+    myArray.push({
+        id: '',
+        firstName: event.target.elements.first.value,
+        secondName: event.target.elements.second.value,
+        crime: event.target.elements.crime.value
+    })
 
-
-
-    // let obsahSecond = event.target.elements.second.value
-
-    // let obsahFirstString = JSON.stringify(obsahFirst)
-
-
-    // let newPara = document.createElement('p')
-    // newPara.innerHTML = `${obsahFirst} <br> ${obsahSecond}`
-    // form.appendChild(newPara)
+    myArrayJSON = JSON.stringify(myArray)
+    localStorage.setItem('criminals', myArrayJSON)
 
 })

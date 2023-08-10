@@ -363,3 +363,90 @@ myInput.addEventListener('submit', event => {
     document.querySelector('body').style.backgroundColor = colorChange
     event.target.elements.color.value = ''
 })
+
+/// SCROLLOVANIE
+
+window.addEventListener('scroll', () => {
+    let scrolled = window.scrollY
+    let scrollable = document.documentElement.scrollHeight - window.innerHeight
+    console.log(scrollable)
+    console.log(scrolled)
+
+    if(Math.floor(scrolled) === scrollable){
+        alert('doscrollovali ste na koniec')
+    }
+})
+
+///Scrollovaci button na konci stranky 
+
+window.addEventListener('scroll', () => {
+    let scrolled = window.scrollY
+    let scrollable = document.documentElement.scrollHeight - innerHeight
+
+    if(Math.floor(scrolled) === scrollable){
+     toTop = document.querySelector('.top-page')
+     toTop.style.display = 'block'
+
+     toTop.addEventListener('click', () =>{
+     toTop.style.display = 'None'
+     })
+    }
+})
+
+body {
+    padding: 0px 50px
+}
+
+.top-page {
+    display: None;
+    text-decoration: none;
+    background: orange;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 18px;
+    position: fixed;
+    right: 20px;
+    bottom: 30px
+}
+
+////Smooth scroll Nav
+
+let prveTlac = document.querySelector('.first-item-menu')
+let scrollGoal = document.querySelector('.scroll-goal').offsetTop
+
+prveTlac.addEventListener('click', () => {
+    window.scrollTo({
+        top: scrollGoal,
+        behavior: 'smooth'
+    })
+})
+console.log(scrollGoal)
+
+<!-- <nav>
+        <ul>
+            <li><a href="#" class="first-item-menu">Prva</a></li>
+            <li><a href="#" class="second-item-menu">Druha</a></li>
+            <li><a href="#" class="third-item-menu">Tretia</a></li>
+        </ul>
+    </nav> -->
+
+////Pridavanie do local storage - Apllication v dev tools
+
+    // pridani polozky do local storage
+
+localStorage.setItem('location', 'Ceske Budejovice')
+localStorage.setItem('firstName', "Vlado")
+
+//update storage
+localStorage.setItem('location', 'Praha')
+localStorage.setItem('firstName', 'Harry')
+
+//ziskanie polozky
+console.log(localStorage.getItem('location'))
+console.log(localStorage.getItem('firstName'))
+
+//smazanie polozky
+localStorage.removeItem('firsName')
+
+// zmazanie vsetkeho
+localStorage.clear()

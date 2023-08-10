@@ -450,3 +450,21 @@ localStorage.removeItem('firsName')
 
 // zmazanie vsetkeho
 localStorage.clear()
+
+/////JSON
+
+let user = {
+    firstName: 'David',
+    age: 27
+}
+
+let userJSON = JSON.stringify(user)
+console.log(userJSON)
+localStorage.setItem('user', userJSON)
+
+let userFromLS = localStorage.getItem('user')
+let myUser = JSON.parse(userFromLS)
+
+console.log(myUser)
+
+console.log(myUser.firstName)

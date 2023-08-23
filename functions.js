@@ -58,8 +58,17 @@ const removeNames = (ourNames, id) => {
 
 }
 
+
+
 //ak zamzeme meno z local storage.....opat sa to vypise na stranke
 
 const toListAgain = () => {
-    let nextList = document.querySelector('.list-names').innerHTML = ''
+    document.querySelector('.list-names').innerHTML = ''
+
+    let newData = getSavedNames()
+
+    newData.forEach(element => {
+        const newContent = genereateHTMLstructure(element)
+        document.querySelector('.list-names').appendChild(newContent)
+    });
 }

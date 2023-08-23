@@ -22,7 +22,9 @@ myForm.addEventListener('submit', (event) => {
 
 let vypis = document.querySelector('.to-list')
 vypis.addEventListener('click', (event) => {
-    
+    document.querySelector('.list-names').innerHTML = ''
+
+
     let namesFromLS = localStorage.getItem('names')
     let namesFromStoragesJSON = JSON.parse(namesFromLS)
 
